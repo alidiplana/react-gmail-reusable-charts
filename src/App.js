@@ -5,7 +5,8 @@ export class App extends Component {
   responseGoogle = (response) => {
 
     console.log(response);
-    console.log(this.fetchDetail(response.tokenObj.access_token));
+    console.log(response.tokenObj.access_token);
+    this.fetchDetail(response.tokenObj.access_token);
     
   };
 
@@ -15,7 +16,6 @@ export class App extends Component {
       {
         headers: {
           Authorization: "Bearer " + token,
-          
         },
       }
     ).then(response => response.json())
