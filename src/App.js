@@ -3,11 +3,9 @@ import GoogleLogin from "react-google-login";
 
 export class App extends Component {
   responseGoogle = (response) => {
-
     console.log(response);
     console.log(response.tokenObj.access_token);
-    this.fetchDetail(response.tokenObj.access_token);
-    
+    console.log(this.fetchDetail(response.tokenObj.access_token));
   };
 
   fetchDetail(token) {
@@ -18,8 +16,9 @@ export class App extends Component {
           Authorization: "Bearer " + token,
         },
       }
-    ).then(response => response.json())
-    .then(data => console.log(data));
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   }
 
   render() {
@@ -28,7 +27,6 @@ export class App extends Component {
         <GoogleLogin
           clientId="354361971363-8jjcvgd3brcgb2nn38bqmhi0gjr3e2rh.apps.googleusercontent.com"
           onSuccess={this.responseGoogle}
-          cookiePolicy={"single_host_origin"}
         />
       </div>
     );
