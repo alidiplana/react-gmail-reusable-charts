@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import GoogleLogin from "react-google-login";
+import HighCharts from "./components/HighCharts";
+import ReactVIS from "./components/ReactVIS";
 
 export class App extends Component {
   responseGoogle = (response) => {
     console.log(response);
     console.log(response.tokenObj.access_token);
-    console.log(this.fetchDetail(response.tokenObj.access_token));
+    this.fetchDetail(response.tokenObj.access_token);
   };
 
   fetchDetail(token) {
@@ -26,8 +28,11 @@ export class App extends Component {
       <div>
         <GoogleLogin
           clientId="354361971363-8jjcvgd3brcgb2nn38bqmhi0gjr3e2rh.apps.googleusercontent.com"
+          scope="https://www.googleapis.com/auth/gmail.labels"
           onSuccess={this.responseGoogle}
         />
+        <HighCharts />
+        <ReactVIS />
       </div>
     );
   }
